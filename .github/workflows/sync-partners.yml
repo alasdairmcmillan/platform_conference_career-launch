@@ -45,6 +45,18 @@ jobs:
           # under /partners (the page is served at /partners, not /partners/).
           sed -i -E 's#(src|href)="([a-zA-Z0-9_-]+\.png)"#\1="/partners/\2"#g' public/partners/index.html
 
+          # The gilpages copy is noindex so it stays out of search; the copy
+          # served at careerlaunch.myblueprint.ca/partners is the one to index.
+          # Strip any robots meta tag and ensure a canonical link points here.
+          sed -i -E "s#<meta[^>]*name=[\"']robots[\"'][^>]*>##I" public/partners/index.html
+          if ! grep -qiE "rel=[\"']canonical[\"']" public/partners/index.html; then
+            sed -i 's#</head>#<link rel="canonical" href="https://careerlaunch.myblueprint.ca/partners">\n</head>#' public/partners/index.html
+          fi
+          if grep -qiE "name=[\"']robots[\"']" public/partners/index.html; then
+            echo "robots meta tag still present in public/partners/index.html" >&2
+            exit 1
+          fi
+
           rm -rf partners-source
 
       - name: Commit and push if changed
