@@ -1,7 +1,12 @@
-name: Sync partners page content
+name: Sync static pages content
 
-# Pulls the partners page from gilpages/career-launch-industry-partner into
-# public/partners/ and commits it, which triggers a Vercel deploy.
+# Pulls the static pages from gilpages/career-launch-industry-partner into
+# public/<route>/ and commits them, which triggers a Vercel deploy:
+#   repo root         -> /partners
+#   associations/     -> /associations
+#
+# The filename stays sync-partners.yml because the source repo's trigger
+# workflow dispatches it by name.
 #
 # Triggered by:
 #   - workflow_dispatch: called by a small trigger workflow in the source repo
@@ -28,45 +33,66 @@ jobs:
       - name: Checkout platform repo
         uses: actions/checkout@v4
 
-      - name: Checkout partners source repo
+      - name: Checkout pages source repo
         uses: actions/checkout@v4
         with:
           repository: gilpages/career-launch-industry-partner
-          path: partners-source
+          path: pages-source
 
-      - name: Copy content into public/partners
+      - name: Copy content into public/
         run: |
-          find public/partners -type f ! -name 'README.md' -delete
-          cp partners-source/index.html public/partners/
-          cp partners-source/*.png public/partners/ 2>/dev/null || true
+          set -euo pipefail
 
-          # The page currently inlines all images as data URIs, but if a future
-          # version references the PNGs relatively, prefix them so they resolve
-          # under /partners (the page is served at /partners, not /partners/).
-          sed -i -E 's#(src|href)="([a-zA-Z0-9_-]+\.png)"#\1="/partners/\2"#g' public/partners/index.html
+          # Each entry is "<route>:<folder in source repo>".
+          # To add a page: add an entry here, a rewrite in next.config.ts and an
+          # exception in .vercelignore.
+          PAGES="partners:. associations:associations"
 
-          # The gilpages copy is noindex so it stays out of search; the copy
-          # served at careerlaunch.myblueprint.ca/partners is the one to index.
-          # Strip any robots meta tag and ensure a canonical link points here.
-          sed -i -E "s#<meta[^>]*name=[\"']robots[\"'][^>]*>##I" public/partners/index.html
-          if ! grep -qiE "rel=[\"']canonical[\"']" public/partners/index.html; then
-            sed -i 's#</head>#<link rel="canonical" href="https://careerlaunch.myblueprint.ca/partners">\n</head>#' public/partners/index.html
-          fi
-          if grep -qiE "name=[\"']robots[\"']" public/partners/index.html; then
-            echo "robots meta tag still present in public/partners/index.html" >&2
-            exit 1
-          fi
+          for entry in $PAGES; do
+            route="${entry%%:*}"
+            src="pages-source/${entry#*:}"
+            dest="public/$route"
+            html="$dest/index.html"
+            url="https://careerlaunch.myblueprint.ca/$route"
 
-          rm -rf partners-source
+            if [ ! -f "$src/index.html" ]; then
+              echo "::warning::$src/index.html not found; leaving /$route unchanged."
+              continue
+            fi
+
+            mkdir -p "$dest"
+            find "$dest" -type f ! -name 'README.md' -delete
+            cp "$src/index.html" "$dest/"
+            cp "$src"/*.png "$dest/" 2>/dev/null || true
+
+            # Pages mostly inline images as data URIs, but if one references a
+            # PNG relatively, prefix it so it resolves under /$route (the page is
+            # served at /$route, not /$route/).
+            sed -i -E "s#(src|href)=\"([a-zA-Z0-9_-]+\.png)\"#\1=\"/$route/\2\"#g" "$html"
+
+            # The gilpages copy is noindex so it stays out of search; the copy
+            # served on careerlaunch.myblueprint.ca is the one to index.
+            # Strip any robots meta tag and ensure a canonical link points here.
+            sed -i -E "s#<meta[^>]*name=[\"']robots[\"'][^>]*>##I" "$html"
+            if ! grep -qiE "rel=[\"']canonical[\"']" "$html"; then
+              sed -i "s#</head>#<link rel=\"canonical\" href=\"$url\">\n</head>#" "$html"
+            fi
+            if grep -qiE "name=[\"']robots[\"']" "$html"; then
+              echo "robots meta tag still present in $html" >&2
+              exit 1
+            fi
+          done
+
+          rm -rf pages-source
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/partners
+          git add public/partners public/associations
           if git diff --cached --quiet; then
             echo "No content changes; nothing to commit."
           else
-            git commit -m "chore: sync partners page content"
+            git commit -m "chore: sync static pages content"
             git push
           fi
