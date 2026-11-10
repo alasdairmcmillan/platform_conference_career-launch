@@ -18,10 +18,14 @@ const nextConfig: NextConfig = {
       { source: '/booths/:path*', destination: '/', permanent: false },
     ];
   },
-  // The partners page is a static HTML file synced into public/partners/
-  // from gilpages/career-launch-industry-partner (see sync-partners workflow).
+  // The partners and associations pages are static HTML files synced into
+  // public/<route>/ from gilpages/career-launch-industry-partner (see the
+  // sync-partners workflow).
   async rewrites() {
-    return [{ source: '/partners', destination: '/partners/index.html' }];
+    return [
+      { source: '/partners', destination: '/partners/index.html' },
+      { source: '/associations', destination: '/associations/index.html' },
+    ];
   },
 };
 
