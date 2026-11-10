@@ -4,12 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Career Launch 2027: Association Program</title>
-<!-- This GitHub Pages copy is intentionally noindex. The canonical, indexable
-     version is careerlaunch.myblueprint.ca/associations; the platform's sync
-     workflow strips this tag. -->
-
-<link rel="canonical" href="https://careerlaunch.myblueprint.ca/associations">
-<meta name="description" content="Career Launch 2027: put your industry in front of students and your members on the record. A national directory of employers and what each will do with a student, searchable by distance.">
+<meta name="description" content="Build tomorrow’s workforce and deliver value to your members today. Free visibility for your members in a national directory of employers and what each will do with a student, searchable by distance.">
 <link rel="stylesheet" href="https://use.typekit.net/xsa1ldt.css">
 <style>
 :root{
@@ -131,6 +126,17 @@ section.tint{background:var(--surface)}
 .bars .lab b{font-weight:900}
 .track{height:.6rem;background:var(--surface);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .fill{height:100%;background:var(--blue);display:block}
+.sample{display:inline-block;margin:0 0 1.1rem;padding:.35rem .7rem;border-radius:4px;
+  background:var(--wash);border:1px solid var(--blue);font-size:.8125rem;font-weight:700;color:var(--blue-ink);max-width:none}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);border-radius:3px;padding:.2rem .5rem;font-size:.875rem;color:var(--soft)}
+.offers{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:2.5rem}
+@media (min-width:52rem){.offers{grid-template-columns:1fr 1fr;gap:2rem}}
+.offer{border:1px solid var(--line);border-radius:6px;padding:1.75rem;background:var(--paper)}
+.offer.paid{background:var(--surface)}
+.offer .tag{font-size:.8125rem;font-weight:700;color:var(--blue-ink);margin:0 0 .6rem}
+.offer h3{font-size:1.35rem;font-weight:900;letter-spacing:-.015em}
+.offer p{color:var(--soft);margin:0 0 1rem}
 .bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1.25rem;margin:0 0 1.5rem;padding:0;list-style:none}
 .bignums li{border-top:2px solid var(--blue);padding-top:.6rem}
 .bignums b{display:block;font-weight:900;font-size:1.75rem;line-height:1.05;letter-spacing:-.02em}
@@ -142,7 +148,9 @@ section.tint{background:var(--surface)}
 .step{border:1px solid var(--line);border-radius:6px;padding:1.5rem;background:var(--paper);display:flex;flex-direction:column}
 .step .tag{font-size:.8125rem;font-weight:700;color:var(--blue-ink);margin:0 0 .75rem}
 .step p{color:var(--soft);margin:0;font-size:.9875rem}
-.step .do{margin-top:auto;padding-top:1.25rem;font-size:.875rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:1.25rem}
+.step .do{margin-top:auto;padding-top:1.25rem;font-size:.875rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
+.step h3{min-height:2.9rem}
+@media (max-width:46rem){.step h3{min-height:0}}
 .step.free{border-color:var(--blue);background:var(--wash)}
 .step.free p,.step.free .do{color:var(--ink)}
 .step.free .do{border-top-color:color-mix(in srgb,var(--blue) 35%,transparent)}
@@ -161,6 +169,7 @@ section.tint{background:var(--surface)}
 footer{padding:3rem 0 4rem;border-top:1px solid var(--line);font-size:.875rem;color:var(--soft)}
 footer p{max-width:48rem}
 </style>
+<link rel="canonical" href="https://careerlaunch.myblueprint.ca/associations">
 </head>
 <body>
 
@@ -175,8 +184,9 @@ footer p{max-width:48rem}
 
 <div class="wrap hero">
   <p class="eyebrow">Career Launch 2027 · Association Program</p>
-  <h1>Put your industry in front of students. Put your members on the record.</h1>
-  <p class="lead">Your members cannot hire people who have never heard of the work. Here their own people tell students what the job is actually like, inside myBlueprint, where Canadian students plan their courses and careers. And when a school nearby goes looking for an employer who will take a student, a national directory of what each employer will do puts your members in front of it.</p>
+  <h1>Build tomorrow’s workforce. Deliver value to your members today.</h1>
+  <p class="lead">The future of your industry depends on the next generation knowing it exists. Your association can help students discover the careers, the people and the possibilities in your industry, in the place where they are already planning their futures.</p>
+  <p class="lead" style="margin-top:1rem">Members get free visibility in a national directory of employers and what each will do with a student, searchable by distance, with your members visible to the schools nearest them. Members who want to go further can tell their own career stories through a Career Launch content partnership.</p>
   <div class="actions">
     <a class="btn lg" href="https://app.onecal.io/b/carly-silberstein/book-time-with-carly-myblueprint">Book a call</a>
     <a class="btn lg ghost" href="#works">See how it works</a>
@@ -191,13 +201,13 @@ footer p{max-width:48rem}
 <section>
   <div class="wrap">
     <p class="eyebrow">What it looks like</p>
-    <h2>Three screens. One for a student, one for a teacher, one for your board.</h2>
+    <h2>Students discover your industry. Schools find your members. You report the result.</h2>
 
     <div class="module">
       <div class="tabs" role="tablist" aria-label="What the association program does">
-        <button role="tab" id="t0" aria-controls="p0" aria-selected="true">What a student sees</button>
-        <button role="tab" id="t1" aria-controls="p1" aria-selected="false">What a teacher sees</button>
-        <button role="tab" id="t2" aria-controls="p2" aria-selected="false">What you get back</button>
+        <button role="tab" id="t0" aria-controls="p0" aria-selected="true">Students discover careers</button>
+        <button role="tab" id="t1" aria-controls="p1" aria-selected="false">Schools find your members</button>
+        <button role="tab" id="t2" aria-controls="p2" aria-selected="false">You show your impact</button>
       </div>
 
       <div class="panel" id="p0" role="tabpanel" aria-labelledby="t0">
@@ -310,16 +320,18 @@ footer p{max-width:48rem}
       </div>
 
       <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+        <p class="sample">Sample data. These are illustrative figures, not results.</p>
         <ul class="bignums">
+          <li><b>63</b><span>of your members taking part</span></li>
           <li><b>148</b><span>schools engaged</span></li>
-          <li><b>4,180</b><span>views of member content</span></li>
+          <li><b>26</b><span>school boards reached</span></li>
         </ul>
         <ul class="bars">
           <li><div class="lab"><span>Grades 7–8</span><b>27%</b></div><div class="track"><span class="fill" style="width:27%"></span></div></li>
           <li><div class="lab"><span>Grades 9–10</span><b>42%</b></div><div class="track"><span class="fill" style="width:42%"></span></div></li>
           <li><div class="lab"><span>Grades 11–12</span><b>31%</b></div><div class="track"><span class="fill" style="width:31%"></span></div></li>
         </ul>
-        <p class="panel-note">Illustrative examples using sample data. Every figure is a school board, school or grade total. No accounts, no names, no email addresses, no identity carried between surfaces. This is the page you put in front of your own board of directors, or into a grant application.</p>
+        <p class="panel-note">Every figure is a count of member organizations, schools, school boards or grade levels. No accounts, no student names, no email addresses, no identity carried between surfaces. This is the page you put in front of your own board of directors, or into a grant application.</p>
       </div>
     </div>
   </div>
@@ -328,33 +340,66 @@ footer p{max-width:48rem}
 <section class="tint" id="works">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
-    <h2>You endorse and distribute. We do the selling.</h2>
-    <p>Your association is not a reseller and we will not ask you to act like one. Your members hear about this from you, and deal with us.</p>
+    <h2>Your members participate. Your industry benefits. We make it easy.</h2>
+    <p>You are an advocate for your industry, not a reseller, and we will not ask you to act like one. Your members hear about this from you, and we take every onboarding and partnership conversation directly.</p>
     <div class="steps">
       <div class="step">
         <p class="tag">1 · Your association</p>
-        <h3>Endorse and tell members</h3>
-        <p>Run it in your newsletter, share it with your member list, give us a slot at one of your events, and put your name on the program.</p>
+        <h3>Tell your members</h3>
+        <p>Introduce it through your newsletter, your member list, your events and your industry channels, with your association’s name on it. We take every conversation from there.</p>
         <p class="do">No selling. No administration.</p>
       </div>
       <div class="step">
         <p class="tag">2 · Your members</p>
-        <h3>A listing, a voice, or both</h3>
-        <p>A directory listing is free, as a member benefit. Getting their people on screen and into teacher-assigned collections is a Career Launch partnership, taken up directly with us. Most start with the listing.</p>
+        <h3>Give members a new benefit</h3>
+        <p>Members join the national employer directory at no cost, so educators can find the organizations near them offering career exploration and hands-on learning. Going further is optional and paid.</p>
         <p class="do">Each member decides for itself.</p>
       </div>
       <div class="step">
         <p class="tag">3 · Back to you</p>
-        <h3>Reporting you can use</h3>
-        <p>School boards reached and schools engaged, with a grade-level breakdown. A board report, an advocacy proof point, and evidence for your next grant application.</p>
+        <h3>Show your industry’s impact</h3>
+        <p>How many of your members took part, how many schools and school boards they reached, and at which grade levels. Evidence that your association mobilised its sector, for a board report or a grant application.</p>
         <p class="do">Once a year, in writing.</p>
       </div>
       <div class="step free">
         <p class="tag">4 · What it costs</p>
         <h3>Nothing</h3>
-        <p>No fee to your association, and no charge to your members for a directory listing. There is nothing for your board of directors to approve a budget for.</p>
+        <p>No fee to your association, and no charge to members for a directory listing. Content partnerships are optional and arranged directly with us. Nothing here needs a budget line.</p>
         <p class="do">Nothing to fund.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Two separate things</p>
+    <h2>One is free and every member can have it. The other is optional and paid.</h2>
+    <p>Keeping these apart matters, because a member who thinks a free listing comes with a video will be disappointed, and so will one who thinks a listing guarantees a hire.</p>
+    <div class="offers">
+      <div class="offer">
+        <p class="tag">Free member benefit</p>
+        <h3>The employer directory</h3>
+        <p>A member record says who they are, where their sites are, and what they will do with a student. Educators near them search on that last part, which is what turns a listing into something a school acts on.</p>
+        <ul class="chips">
+          <li>Co-op placements</li><li>Apprenticeships, OYAP and RTA ready</li>
+          <li>Sector-Partnered Experiences</li><li>Guest speaker, in person</li>
+          <li>Guest speaker, virtual</li><li>Field trip facilitation</li>
+          <li>Certification training</li><li>Volunteer opportunities</li>
+          <li>French-language friendly</li>
+        </ul>
+        <p style="margin-top:1.25rem">A member chooses what it offers and can change it at any time. Nothing obliges a member to say yes to a school that gets in touch.</p>
+      </div>
+      <div class="offer paid">
+        <p class="tag">Optional paid partnership</p>
+        <h3>Career Launch content</h3>
+        <p>A member’s own people on screen, telling students what the work is like, credited to the member and framed by myBlueprint. It runs on LaunchPad, on the member’s sector page, and inside the collections teachers assign to a whole class.</p>
+        <p>Members arrange this with us directly. Your association does not quote it, sell it or administer it.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>What neither of them is.</strong> We do not source, match or fill placements, and a directory listing is not a recruitment guarantee. What a member gets is to be findable by the schools nearest it, with a record of what it is willing to do. The ask still comes from the teacher.</p>
     </div>
   </div>
 </section>
@@ -375,7 +420,7 @@ footer p{max-width:48rem}
       <a class="btn lg ghost" href="mailto:partnerships@myblueprint.ca">Or send us an email</a>
     </div>
     <div class="callout">
-      <p><strong>If a member wants to be on camera rather than on the record,</strong> that is the industry partnership, and we are glad to have that conversation with them directly. <a href="https://careerlaunch.myblueprint.ca/partners">See the partner page</a>.</p>
+      <p><strong>If a member wants to go further than a directory listing,</strong> that is the Career Launch content partnership, and we are glad to have that conversation with them directly. <a href="https://careerlaunch.myblueprint.ca/partners">See the partner page</a>.</p>
     </div>
   </div>
 </section>
