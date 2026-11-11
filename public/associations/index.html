@@ -68,13 +68,19 @@ h3{font-weight:700;font-size:1.1875rem;line-height:1.25;margin:0 0 .5rem}
 section{padding:4.25rem 0;border-top:1px solid var(--line)}
 section.tint{background:var(--surface)}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-top:2rem}
-.hero{padding:3.75rem 0 3rem;border-top:0}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1.5rem;margin-top:3rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.hero{padding-top:3.5rem;padding-bottom:3rem;border-top:0}
+@media (max-width:40rem){.hero{padding-top:2.25rem;padding-bottom:2.25rem}}
+.strip{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.25rem;border-top:1px solid var(--line);padding-top:1.5rem}
+@media (min-width:40rem){.strip{grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}}
+.strip span{max-width:none}
 .strip b{display:block;font-weight:900;font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.05;letter-spacing:-.02em}
 .strip span{display:block;font-size:.9375rem;color:var(--soft);margin-top:.25rem;max-width:14rem}
 
-.module{border:1px solid var(--line);border-radius:6px;background:var(--paper);overflow:hidden;margin-top:2.5rem}
-.tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line);background:var(--surface)}
+.module{border:1px solid var(--line);border-radius:6px;background:var(--paper);margin-top:2.5rem}
+.tabs{display:flex;flex-wrap:nowrap;border-bottom:1px solid var(--line);background:var(--surface);
+  border-radius:6px 6px 0 0;position:sticky;top:calc(4.5rem + env(safe-area-inset-top,0px));z-index:20}
+.tabs button{flex:1 1 0;min-width:0;text-align:center}
+@media (max-width:40rem){.tabs button{padding:.85rem .5rem;font-size:.875rem}}
 .tabs button{appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-weight:700;
   font-size:.9375rem;color:var(--soft);padding:1rem 1.25rem;border-bottom:3px solid transparent}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--blue)}
@@ -91,7 +97,7 @@ section.tint{background:var(--surface)}
   background:rgba(10,16,32,.55);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.16rem .5rem}
 .chip.cc{left:.7rem;top:.7rem}
 .chip.dur{right:.7rem;top:.7rem}
-.playbtn{position:absolute;z-index:3;top:46%;left:50%;transform:translate(-50%,-50%);
+.playbtn{position:absolute;z-index:3;top:21%;left:50%;transform:translate(-50%,-50%);
   width:3.1rem;height:3.1rem;border-radius:50%;background:rgba(255,255,255,.15);
   border:1.5px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center}
 .playbtn::before{content:"";display:block;width:0;height:0;margin-left:.22rem;
@@ -137,7 +143,8 @@ section.tint{background:var(--surface)}
 .offer .tag{font-size:.8125rem;font-weight:700;color:var(--blue-ink);margin:0 0 .6rem}
 .offer h3{font-size:1.35rem;font-weight:900;letter-spacing:-.015em}
 .offer p{color:var(--soft);margin:0 0 1rem}
-.bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1.25rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.bignums{display:grid;grid-template-columns:1fr;gap:1.1rem;margin:0 0 1.5rem;padding:0;list-style:none}
+@media (min-width:34rem){.bignums{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
 .bignums li{border-top:2px solid var(--blue);padding-top:.6rem}
 .bignums b{display:block;font-weight:900;font-size:1.75rem;line-height:1.05;letter-spacing:-.02em}
 .bignums span{display:block;font-size:.9375rem;color:var(--soft)}
@@ -145,10 +152,10 @@ section.tint{background:var(--surface)}
 .steps{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:2.5rem}
 @media (min-width:46rem){.steps{grid-template-columns:1fr 1fr}}
 @media (min-width:70rem){.steps{grid-template-columns:repeat(4,1fr)}}
-.step{border:1px solid var(--line);border-radius:6px;padding:1.5rem;background:var(--paper);display:flex;flex-direction:column}
+.step{border:1px solid var(--line);border-radius:6px;padding:1.75rem;background:var(--paper);display:flex;flex-direction:column}
 .step .tag{font-size:.8125rem;font-weight:700;color:var(--blue-ink);margin:0 0 .75rem}
 .step p{color:var(--soft);margin:0;font-size:.9875rem}
-.step .do{margin-top:auto;padding-top:1.25rem;font-size:.875rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
+.step .do{margin-top:auto;padding-top:1.5rem;padding-bottom:.25rem;font-size:.875rem;font-weight:700;color:var(--ink);border-top:1px solid var(--line)}
 .step h3{min-height:2.9rem}
 @media (max-width:46rem){.step h3{min-height:0}}
 .step.free{border-color:var(--blue);background:var(--wash)}
@@ -205,9 +212,9 @@ footer p{max-width:48rem}
 
     <div class="module">
       <div class="tabs" role="tablist" aria-label="What the association program does">
-        <button role="tab" id="t0" aria-controls="p0" aria-selected="true">Students discover careers</button>
-        <button role="tab" id="t1" aria-controls="p1" aria-selected="false">Schools find your members</button>
-        <button role="tab" id="t2" aria-controls="p2" aria-selected="false">You show your impact</button>
+        <button role="tab" id="t0" aria-controls="p0" aria-selected="true">Students</button>
+        <button role="tab" id="t1" aria-controls="p1" aria-selected="false">Schools</button>
+        <button role="tab" id="t2" aria-controls="p2" aria-selected="false">You</button>
       </div>
 
       <div class="panel" id="p0" role="tabpanel" aria-labelledby="t0">
@@ -253,19 +260,6 @@ footer p{max-width:48rem}
                   <rect x="22" y="228" width="34" height="24" rx="2" opacity="0.8"/>
                   <rect x="70" y="238" width="44" height="14" rx="2" opacity="0.7"/>
                 </g>
-                <!-- figure -->
-                <g>
-                  <path d="M60 440c0-70 44-118 120-118s120 48 120 118z" fill="#35508F"/>
-                  <path d="M96 440c0-54 34-90 84-90s84 36 84 90z" fill="#44629F" opacity="0.55"/>
-                  <rect x="166" y="196" width="28" height="44" rx="12" fill="#27407A"/>
-                  <circle cx="180" cy="166" r="46" fill="#2E4785"/>
-                  <path d="M136 160a44 44 0 0 1 88 0 44 44 0 0 0-88 0z" fill="#3A5695"/>
-                  <!-- lanyard + badge -->
-                  <path d="M160 238l18 34 18-34" fill="none" stroke="#5B86FF" stroke-width="4" opacity="0.85"/>
-                  <rect x="166" y="268" width="26" height="34" rx="3" fill="#5B86FF" opacity="0.92"/>
-                  <rect x="171" y="276" width="16" height="3" rx="1.5" fill="#0B1222" opacity="0.5"/>
-                  <rect x="171" y="283" width="12" height="3" rx="1.5" fill="#0B1222" opacity="0.35"/>
-                </g>
                 <rect y="150" width="360" height="290" fill="url(#scrim)"/>
               </svg>
               <span class="chip cc">CC · EN/FR</span>
@@ -301,22 +295,22 @@ footer p{max-width:48rem}
             <div class="km">8 km<small>same town</small></div>
             <div><p class="org">[Member organization]</p>
             <p class="does">Co-op placements. Guest speaker, in person. Field trip facilitation.</p>
-            <span class="state ok">Confirmed 14 Sep 2026</span></div>
+            <span class="state ok">Verified 14 Sep 2026</span></div>
           </li>
           <li class="row">
             <div class="km">19 km<small>next town</small></div>
             <div><p class="org">[Member organization]</p>
             <p class="does">Co-op placements. Apprenticeships and OYAP. Certification training.</p>
-            <span class="state ok">Confirmed 2 Oct 2026</span></div>
+            <span class="state ok">Verified 2 Oct 2026</span></div>
           </li>
           <li class="row">
             <div class="km">34 km<small>nearby region</small></div>
             <div><p class="org">[An organization we found publicly]</p>
             <p class="does">Nothing recorded yet. Built from the company’s own public listing, so a search is never empty.</p>
-            <span class="state no">Unconfirmed</span></div>
+            <span class="state no">Unverified</span></div>
           </li>
         </ul>
-        <p class="panel-note">Confirmed records rank above unconfirmed ones, and the date the organization confirmed stays on the record. Ranking runs on distance and confirmation, and is never for sale. The record names the organization, never an employee: no name, email address or phone number is published, and a teacher gets in touch through a form.</p>
+        <p class="panel-note">Verified records rank above unverified ones, and the date the organization verified it stays on the record. Ranking runs on distance and verification, and is never for sale. The record names the organization, never an employee: no name, email address or phone number is published, and a teacher gets in touch through a form.</p>
       </div>
 
       <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
@@ -352,7 +346,7 @@ footer p{max-width:48rem}
       <div class="step">
         <p class="tag">2 · Your members</p>
         <h3>Give members a new benefit</h3>
-        <p>Members join the national employer directory at no cost, so educators can find the organizations near them offering career exploration and hands-on learning. Going further is optional and paid.</p>
+        <p>Two things to put in one email: a free verified listing in the national employer directory, open to every member, and an optional paid content partnership for members who want to go further.</p>
         <p class="do">Each member decides for itself.</p>
       </div>
       <div class="step">
@@ -374,14 +368,14 @@ footer p{max-width:48rem}
 
 <section>
   <div class="wrap">
-    <p class="eyebrow">Two separate things</p>
-    <h2>One is free and every member can have it. The other is optional and paid.</h2>
-    <p>Keeping these apart matters, because a member who thinks a free listing comes with a video will be disappointed, and so will one who thinks a listing guarantees a hire.</p>
+    <p class="eyebrow">Two offers to your members</p>
+    <h2>One is free and open to every member. The other is optional and paid.</h2>
+    <p>Most associations introduce both in the same email: a free offer every member can take up, and a paid option for members who want to go further. Members deal with us on both.</p>
     <div class="offers">
       <div class="offer">
-        <p class="tag">Free member benefit</p>
-        <h3>The employer directory</h3>
-        <p>A member record says who they are, where their sites are, and what they will do with a student. Educators near them search on that last part, which is what turns a listing into something a school acts on.</p>
+        <p class="tag">Free for every member</p>
+        <h3>A verified directory listing</h3>
+        <p>A member adds its organization and verifies it: its sites, its seasons, and what it will actually do with a student. Verified records rank above unverified ones, and the date it verified stays on the record.</p>
         <ul class="chips">
           <li>Co-op placements</li><li>Apprenticeships, OYAP and RTA ready</li>
           <li>Sector-Partnered Experiences</li><li>Guest speaker, in person</li>
@@ -389,13 +383,14 @@ footer p{max-width:48rem}
           <li>Certification training</li><li>Volunteer opportunities</li>
           <li>French-language friendly</li>
         </ul>
-        <p style="margin-top:1.25rem">A member chooses what it offers and can change it at any time. Nothing obliges a member to say yes to a school that gets in touch.</p>
+        <p style="margin-top:1.25rem"><strong>Who it suits.</strong> Members with premises and staff who are willing to have a school get in touch. A member picks what it offers, can offer nothing but visibility, and can change it at any time.</p>
       </div>
       <div class="offer paid">
-        <p class="tag">Optional paid partnership</p>
-        <h3>Career Launch content</h3>
+        <p class="tag">Optional and paid</p>
+        <h3>A Career Launch content partnership</h3>
         <p>A member’s own people on screen, telling students what the work is like, credited to the member and framed by myBlueprint. It runs on LaunchPad, on the member’s sector page, and inside the collections teachers assign to a whole class.</p>
         <p>Members arrange this with us directly. Your association does not quote it, sell it or administer it.</p>
+        <p style="margin-top:1.25rem"><strong>Who it suits.</strong> Members who want students to know the industry exists, whether or not they are set up to host one. This does not depend on a directory listing and works for a membership that is not built to take students on site.</p>
       </div>
     </div>
     <div class="callout">
@@ -412,7 +407,7 @@ footer p{max-width:48rem}
     <div class="tl">
       <div><b>Spring 2027</b><span>Directory and sector pages live</span></div>
       <div><b>November 2027</b><span>Career Launch, national</span></div>
-      <div><b>Each spring</b><span>Members confirm, you get reporting</span></div>
+      <div><b>Each spring</b><span>Members verify, you get reporting</span></div>
       <div><b>Your cost</b><span>Nothing</span></div>
     </div>
     <div class="actions">
